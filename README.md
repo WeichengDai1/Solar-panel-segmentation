@@ -22,12 +22,21 @@ This is a solar panel segmentation in computer vision. Here are some examples:
 
 # Update
 Maybe we can try Dice loss:
+
 def dice_loss(score, target):
+
     target = target.float()
+    
     smooth = 1e-5
+    
     intersect = torch.sum(score * target)
+    
     y_sum = torch.sum(target * target)
+    
     z_sum = torch.sum(score * score)
+    
     loss = (2 * intersect + smooth) / (z_sum + y_sum + smooth)
+    
     loss = 1 - loss
+    
     return loss
